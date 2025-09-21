@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html>
+
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My Portfolio</title>
+
+  <style>
+    /* CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Root Variables for Style Guide */
+        :root {
+            /* Color Scheme */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+            
+            /* Fonts */
+            --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --heading-font: 'Arial', sans-serif;
+            
+            /* Spacing */
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
+            
+            /* Border radius */
+            --border-radius: 8px;
+        }
+
+        /* Global Styles */
+        body {
+            font-family: var(--main-font);
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding-bottom: var(--spacing-xl);
+        }
+
+        /* Typography */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--heading-font);
+            margin-bottom: var(--spacing-md);
+            color: var(--dark-color);
+        }
+
+        h1 {
+            font-size: 2.5rem;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: var(--primary-color);
+        }
+
+        p {
+            margin-bottom: var(--spacing-md);
+        }
+
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout Components */
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-md);
+        }
+
+        .header {
+            background-color: var(--dark-color);
+            color: var(--light-color);
+            padding: var(--spacing-lg) 0;
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-links li {
+            margin-left: var(--spacing-lg);
+        }
+
+        .nav-links a {
+            color: var(--light-color);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary-color);
+        }
+
+        /* Card Component */
+        .card {
+            background: white;
+            border-radius: var(--border-radius);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: var(--spacing-lg);
+            margin-bottom: var(--spacing-lg);
+            transition: transform 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            color: var(--primary-color);
+            margin-bottom: var(--spacing-md);
+        }
+
+        /* Grid System */
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        @media (min-width: 768px) {
+            .grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-sm) var(--spacing-md);
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn:hover {
+            background: var(--dark-color);
+        }
+
+        .btn-secondary {
+            background: var(--secondary-color);
+        }
+
+        .btn-accent {
+            background: var(--accent-color);
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--dark-color);
+            color: var(--light-color);
+            padding: var(--spacing-lg) 0;
+            text-align: center;
+            margin-top: var(--spacing-xl);
+        }
+
+        /* Project Structure Visualization */
+        .file-structure {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            margin: var(--spacing-lg) 0;
+        }
+
+        .file-item {
+            padding-left: var(--spacing-md);
+            margin: var(--spacing-sm) 0;
+            position: relative;
+        }
+
+        .file-item::before {
+            content: '📄 ';
+        }
+
+        .folder::before {
+            content: '📁 ';
+        }
+
+        .folder {
+            font-weight: bold;
+            margin-top: var(--spacing-md);
+        }
+
+        .folder-content {
+            padding-left: var(--spacing-lg);
+            border-left: 2px solid var(--light-color);
+            margin: var(--spacing-sm) 0 var(--spacing-sm) var(--spacing-sm);
+        }
+
+        /* Style Guide Section */
+        .color-swatch {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            border-radius: 4px;
+            margin-right: var(--spacing-sm);
+            vertical-align: middle;
+        }
+
+        .swatch-primary {
+            background: var(--primary-color);
+        }
+
+        .swatch-secondary {
+            background: var(--secondary-color);
+        }
+
+        .swatch-accent {
+            background: var(--accent-color);
+        }
+
+        .swatch-dark {
+            background: var(--dark-color);
+        }
+
+        .swatch-light {
+            background: var(--light-color);
+            border: 1px solid #ccc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav {
+                flex-direction: column;
+            }
+            
+            .nav-links {
+                margin-top: var(--spacing-md);
+            }
+            
+            .nav-links li {
+                margin-left: var(--spacing-md);
+                margin-right: var(--spacing-md);
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            h2 {
+                font-size: 1.6rem;
+            }
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            padding: var(--spacing-xl) 0;
+            background: linear-gradient(135deg, var(--primary-color), var(--dark-color));
+            color: white;
+            border-radius: var(--border-radius);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: var(--spacing-md);
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto var(--spacing-lg);
+        }
+
+        /* About Section */
+        .about {
+            display: flex;
+            flex-direction: column;
+            gap: var(--spacing-lg);
+            margin-bottom: var(--spacing-xl);
+        }
+
+        @media (min-width: 768px) {
+            .about {
+                flex-direction: row;
+            }
+            
+            .about-content {
+                flex: 2;
+            }
+            
+            .about-image {
+                flex: 1;
+            }
+        }
+
+        .about-image {
+            background-color: #ddd;
+            border-radius: var(--border-radius);
+            min-height: 300px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Project Section */
+        .project-filters {
+            display: flex;
+            justify-content: center;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        /* Contact Form */
+        .form-group {
+            margin-bottom: var(--spacing-md);
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: var(--spacing-sm);
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: var(--spacing-sm);
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+        }
+  </style>
+
+  
+</head>
+<body>
+  <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <nav class="nav">
+                <div class="logo">MyPortfolio</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <h1>Welcome to My Portfolio</h1>
+            <p>I'm a web developer passionate about creating beautiful and functional websites</p>
+            <a href="#projects" class="btn btn-secondary">View My Work</a>
+        </section>
+
+        <!-- Project Structure -->
+        <section>
+            <h2>Project Structure</h2>
+            <div class="file-structure">
+                <div class="folder">Portfolio</div>
+                <div class="folder-content">
+                    <div class="file-item">index.html</div>
+                    <div class="file-item">README.md</div>
+                    <div class="folder">images</div>
+                    <div class="folder-content">
+                        <div class="file-item">logo.png</div>
+                        <div class="file-item">hero-banner.jpg</div>
+                        <div class="file-item">project-1.jpg</div>
+                        <div class="file-item">project-2.jpg</div>
+                    </div>
+                    <div class="folder">styles</div>
+                    <div class="folder-content">
+                        <div class="file-item">style.css</div>
+                        <div class="file-item">reset.css</div>
+                    </div>
+                    <div class="folder">scripts</div>
+                    <div class="folder-content">
+                        <div class="file-item">main.js</div>
+                        <div class="file-item">projects.js</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Style Guide -->
+        <section>
+            <h2>Style Guide</h2>
+            <div class="card">
+                <h3 class="card-title">Color Palette</h3>
+                <p>
+                    <span class="color-swatch swatch-primary"></span>Primary: #3498db
+                </p>
+                <p>
+                    <span class="color-swatch swatch-secondary"></span>Secondary: #2ecc71
+                </p>
+                <p>
+                    <span class="color-swatch swatch-accent"></span>Accent: #e74c3c
+                </p>
+                <p>
+                    <span class="color-swatch swatch-dark"></span>Dark: #2c3e50
+                </p>
+                <p>
+                    <span class="color-swatch swatch-light"></span>Light: #ecf0f1
+                </p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Typography</h3>
+                <h1>Heading 1</h1>
+                <h2>Heading 2</h2>
+                <h3>Heading 3</h3>
+                <p>This is a paragraph. The main font is 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif.</p>
+                <p>Headings use Arial, sans-serif as the font family.</p>
+            </div>
+
+            <div class="card">
+                <h3 class="card-title">Components</h3>
+                <p>Buttons:</p>
+                <a href="#" class="btn">Primary Button</a>
+                <a href="#" class="btn btn-secondary">Secondary Button</a>
+                <a href="#" class="btn btn-accent">Accent Button</a>
+                
+                <p style="margin-top: var(--spacing-md);">Cards:</p>
+                <div class="card">
+                    <h4 class="card-title">Example Card</h4>
+                    <p>This is an example card component with a hover effect.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about">
+            <div class="about-content">
+                <h2>About Me</h2>
+                <p>Hello! I'm a passionate web developer with experience in creating responsive and user-friendly websites. I enjoy turning complex problems into simple, beautiful and intuitive designs.</p>
+                <p>My goal is to build web applications that are both visually appealing and highly functional, with clean code that follows best practices.</p>
+                <a href="#contact" class="btn">Get In Touch</a>
+            </div>
+            <div class="about-image">
+                [Profile Image Placeholder]
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>My Projects</h2>
+            <div class="project-filters">
+                <button class="btn btn-secondary">All</button>
+                <button class="btn">Web Design</button>
+                <button class="btn">JavaScript</button>
+                <button class="btn">React</button>
+            </div>
+            
+            <div class="grid">
+                <div class="card">
+                    <h3 class="card-title">E-Commerce Website</h3>
+                    <p>A fully responsive e-commerce website with product filtering and cart functionality.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Task Management App</h3>
+                    <p>A drag-and-drop task management application with local storage support.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+                <div class="card">
+                    <h3 class="card-title">Weather Dashboard</h3>
+                    <p>A weather application that displays current and forecasted weather for any location.</p>
+                    <a href="#" class="btn">View Project</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2>Get In Touch</h2>
+            <div class="card">
+                <form>
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" placeholder="Your Name">
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="Your Email">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea id="message" placeholder="Your Message"></textarea>
+                    </div>
+                    <button type="submit" class="btn">Send Message</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Team Notes Section -->
+        <section>
+            <h2>Team Notes & Next Steps</h2>
+            <div class="card">
+                <h3 class="card-title">Project Setup Checklist</h3>
+                <p>✅ Create folder structure (Portfolio, images, styles, scripts)</p>
+                <p>✅ Set up index.html and style.css files</p>
+                <p>✅ Define style guide with color scheme and typography</p>
+                <p>✅ Implement semantic HTML structure</p>
+                <p>✅ Create responsive layout with CSS Grid and Flexbox</p>
+                <p>⏳ Set up GitHub repository with team collaboration</p>
+                <p>⏳ Create shared documentation for style decisions</p>
+                <p>⏳ Implement peer review process with pull requests</p>
+                <p>⏳ Add JavaScript functionality in scripts folder</p>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2025 My Portfolio. All rights reserved.</p>
+            <p>Follow me on <a href="#">Twitter</a>, <a href="#">LinkedIn</a>, and <a href="#">GitHub</a>.</p>
+        </div>
+    </footer>
+
+    <!-- JavaScript placeholder for future functionality -->
+
+  <script>
+    // This is a placeholder for future JavaScript functionality
+        console.log("Portfolio template loaded successfully");
+        
+        // TODO: Add interactive features
+        // TODO: Implement form validation
+        // TODO: Add project filtering functionality
+        // TODO: Create modal for project details
+  </script>
+</body>
+</html>
