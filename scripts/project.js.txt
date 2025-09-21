@@ -1,0 +1,28 @@
+ <!-- Project Structure -->
+        <section>
+            <h2>Project Structure</h2>
+            <div class="file-structure">
+                <div class="folder">Portfolio</div>
+                <div class="folder-content">
+                    <div class="file-item">index.html</div>
+                    <div class="file-item">README.md</div>
+                    <div class="folder">images</div>
+                    <div class="folder-content">
+                        <div class="file-item">logo.png</div>
+                        <div class="file-item">hero-banner.jpg</div>
+                        <div class="file-item">project-1.jpg</div>
+                        <div class="file-item">project-2.jpg</div>
+                    </div>
+                    <div class="folder">styles</div>
+                    <div class="folder-content">
+                        <div class="file-item">style.css</div>
+                        <div class="file-item">reset.css</div>
+                    </div>
+                    <div class="folder">scripts</div>
+                    <div class="folder-content">
+                        <div class="file-item">main.js</div>
+                        <div class="file-item">projects.js</div>
+                    </div>
+                </div>
+            </div>
+        </section>

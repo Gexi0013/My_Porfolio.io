@@ -1,0 +1,31 @@
+/* CSS Reset */
+        *, *::before, *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Root Variables for Style Guide */
+        :root {
+            /* Color Scheme */
+            --primary-color: #3498db;
+            --secondary-color: #2ecc71;
+            --accent-color: #e74c3c;
+            --dark-color: #2c3e50;
+            --light-color: #ecf0f1;
+            --text-color: #333;
+            --background-color: #f9f9f9;
+            
+            /* Fonts */
+            --main-font: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            --heading-font: 'Arial', sans-serif;
+            
+            /* Spacing */
+            --spacing-sm: 0.5rem;
+            --spacing-md: 1rem;
+            --spacing-lg: 2rem;
+            --spacing-xl: 4rem;
+            
+            /* Border radius */
+            --border-radius: 8px;
+        }
